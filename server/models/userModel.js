@@ -21,21 +21,20 @@ const userSchema = new mongoose.Schema({
     type: String,
     unique: true,
   },
-  image:{
-    type:Object,
-    default:{
-      fileId:'',
-      url:"https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-    }
+  image: {
+    type: Object,
+    default: {
+      fileId: "",
+      url: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
   },
-  socketId:{
-    type:String,
-    default:""
+  socketId: {
+    type: String,
+    default: "",
   },
   chats: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref:"chat"
+      type: String,
     },
   ],
   password: {

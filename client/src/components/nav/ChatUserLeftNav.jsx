@@ -13,7 +13,9 @@ const ChatUserLeftNav = ({ setchatPartner, setdisplayMsg }) => {
     });
   };
 
-  const createGroup = () => {};
+  const createGroup = () => {
+    disp
+  };
 
   return (
     <>

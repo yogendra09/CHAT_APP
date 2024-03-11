@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { asyncCurrentUser } from "../../../store/Actions/userAction";
 import { useNavigate } from "react-router-dom";
-import Chat from "../Chat";
+import Chat from "../../pages/chat/Chat";
 import { socket } from "../../../socket";
 
 const Home = () => {

@@ -13,9 +13,9 @@ module.exports = (server) => {
 
   io.on("connection", (socket) => {
     console.log("A user connected!");
-
+    let currentUser;
     socket.on("server_joined", async (data) => {
-      const currentUser = await userModel.findOne({ username: data.user });
+      currentUser = await userModel.findOne({ username: data.user });
 
       console.log(data);
       await userModel.findOneAndUpdate(
@@ -38,6 +38,13 @@ module.exports = (server) => {
       const receiverUser = await userModel.findOne({
         username: message.receiver,
       });
+
+      if (!receiverUser.chats.includes(message.sender)) {
+        receiverUser.chats.push(message.sender);
+        currentUser.chats.push(message.receiver);
+        await currentUser.save();
+        await receiverUser.save();
+      }
 
       const newMessage = await chatModel({
         sender: message.sender,

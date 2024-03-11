@@ -1,11 +1,10 @@
 import React from 'react'
-import Chat from "./components/Chat"
 import {Route,BrowserRouter, Routes} from "react-router-dom"
-import Login from "./components/login/Login"
-import Register from './components/register/Register'
+import Login from "./pages/login/Login"
+import Register from './pages/register/Register'
 import Home from './components/home/Home'
 import { useSelector } from 'react-redux'
-import Profile from "./components/profile/Profile"
+import Profile from "./pages/profile/Profile"
 import Feed from './components/feed/Feed'
 const App = () => {
 
