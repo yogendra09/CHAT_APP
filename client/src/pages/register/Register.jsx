@@ -24,13 +24,11 @@ const Register = () => {
     };
 
     dispatch(asyncUserRegister(newUser));
-    dispatch(asyncCurrentUser());
   };
 
   useEffect(()=>{
-    dispatch(asyncCurrentUser());
     if(isAuthenticated) navigate("/");
-  })
+  },[isAuthenticated])
 
   return (
     <div>

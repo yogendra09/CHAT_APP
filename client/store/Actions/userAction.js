@@ -35,3 +35,12 @@ export const asyncUserLogin = (user) => async (dispatch, getstate) => {
       // console.log(error.response.data.message);
     }
   };
+export const asyncUserLogout = () => async (dispatch, getstate) => {
+    try {
+      const { data } = await axios.post("/logout");
+      dispatch(removeUser());
+    } catch (error) {
+      console.log(error);
+      // console.log(error.response.data.message);
+    }
+  };

@@ -12,7 +12,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(asyncCurrentUser());
+    // dispatch(asyncCurrentUser());
     // console.log(user)
     if (!isAuthenticated) navigate("/login");
   }, [isAuthenticated]);

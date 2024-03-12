@@ -5,7 +5,7 @@ const chatModel = require("./models/chatModel");
 module.exports = (server) => {
   const io = new Server(server, {
     cors: {
-      origin: "*",
+      origin: true,
       methods: ["GET", "POST"],
       credentials: true,
     },
@@ -84,6 +84,7 @@ module.exports = (server) => {
         {
           socketId: "",
         }
+        
       );
     });
   });

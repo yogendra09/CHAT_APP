@@ -33,7 +33,7 @@ app.use(expressSession({
 app.use(cookieParser());
 
 
-app.use('/',require("./routes/indexRoutes"));
+app.use('/api',require("./routes/indexRoutes"));
 
 const ErrorHandler = require("./utils/ErrorHandler");
 const { generatedErrors } = require("./middlewares/errors");
