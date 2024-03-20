@@ -1,13 +1,11 @@
 const express = require("express");
 const app = express();
-const http = require("http");
 const cors = require("cors");
 const { Server } = require("socket.io");
 const path = require("path");
 const dotenv = require("dotenv").config({path:"./.env"});
-const socketapi = require("./socketapi");
 const mongoStore = require('connect-mongo');
-const server = http.createServer(app);
+const http = require("http");
 app.use(cors({ origin: true, credentials: true }));
 require('./models/database').connectDatabase();
 
@@ -37,6 +35,7 @@ app.use('/api',require("./routes/indexRoutes"));
 
 const ErrorHandler = require("./utils/ErrorHandler");
 const { generatedErrors } = require("./middlewares/errors");
+const { createSocketServer } = require("./socketapi");
 
 
 app.all("*",(req,res,next)=>{
@@ -45,8 +44,8 @@ app.all("*",(req,res,next)=>{
 app.use(generatedErrors);
 
 
-const io = socketapi(server);
-
+const server = http.createServer(app);
+createSocketServer(server)
 
 server.listen(process.env.PORT, () => {
   console.log("server running on port "+process.env.PORT);

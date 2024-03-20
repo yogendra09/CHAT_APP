@@ -18,8 +18,7 @@ const Login = () => {
   }
 
   useEffect(()=>{
-    console.log(isAuthenticated)
-    // dispatch(asyncCurrentUser());
+    dispatch(asyncCurrentUser());
      if(isAuthenticated) navigate("/");
   },[isAuthenticated])
   

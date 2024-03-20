@@ -5,6 +5,7 @@ import {
   asyncUserRegister,
 } from "../../../store/Actions/userAction";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const Register = () => {
   const [email, setemail] = useState("");
@@ -13,6 +14,7 @@ const Register = () => {
   const { isAuthenticated } = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
 
   const RegisterHandler = (e) => {
     console.log(email,password)

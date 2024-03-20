@@ -1,16 +1,15 @@
-const { Server } = require("socket.io");
+const socket = require("socket.io");
 const userModel = require("./models/userModel");
 const chatModel = require("./models/chatModel");
 
-module.exports = (server) => {
-  const io = new Server(server, {
+const createSocketServer = (server) => {
+  const io =  socket(server, {
     cors: {
-      origin: true,
+      origin: "*",
       methods: ["GET", "POST"],
       credentials: true,
     },
   });
-
   io.on("connection", (socket) => {
     console.log("A user connected!");
     let currentUser;
@@ -89,3 +88,6 @@ module.exports = (server) => {
     });
   });
 };
+
+
+module.exports = {createSocketServer}

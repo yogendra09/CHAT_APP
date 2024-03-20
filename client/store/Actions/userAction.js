@@ -29,6 +29,7 @@ export const asyncUserRegister = (newUser) => async (dispatch, getstate) => {
 export const asyncUserLogin = (user) => async (dispatch, getstate) => {
     try {
       const { data } = await axios.post("/login",user);
+      // console.log(data.token)
       dispatch(asyncCurrentUser());
     } catch (error) {
       console.log(error);

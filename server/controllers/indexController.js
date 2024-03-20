@@ -23,13 +23,13 @@ exports.userLogout = catchAsyncErrors(async (req, res, next) => {
   const token = user.getjwttoken();
 
   const option = {
-    exipres: new Date(0),
+    exipres: new Date(),
     httpOnly: true,
     // secure:true
   };
   res
     .status(200)
-    .cookie("token", token, option)
+    .cookie("token",'', option)
     .json({ message: "user logout!" });
 });
 
