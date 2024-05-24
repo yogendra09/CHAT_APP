@@ -11,6 +11,7 @@ import { socket } from "../../../socket";
 import { useNavigate } from "react-router-dom";
 import { asyncCurrentUser } from "../../../store/Actions/userAction";
 import ChatArea from "../../components/chat/ChatArea";
+
 const Chat = () => {
   const { user } = useSelector((state) => state.userReducer);
   const { isAuthenticated } = useSelector((state) => state.userReducer);
@@ -20,12 +21,8 @@ const Chat = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!isAuthenticated) navigate("/login");
-    dispatch(asyncCurrentUser());
     dispatch(updateConnection(true));
-
     socket.emit("server_joined", { user: user && user.username });
-
     socket.on("activeUsers", (data) => {
       dispatch(activeUsers(data));
     });

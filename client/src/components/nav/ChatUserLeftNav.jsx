@@ -4,7 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { socket } from "../../../socket";
 import { MdGroup } from "react-icons/md";
 import { removeUser } from "../../../store/Reducers/userReducer";
-import { asyncUserLogout } from "../../../store/Actions/userAction";
+import { asyncUserLogin, asyncUserLogout } from "../../../store/Actions/userAction";
+import { IoSearchOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
+
 const ChatUserLeftNav = ({ setchatPartner, setdisplayMsg }) => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.userReducer);
@@ -16,13 +19,13 @@ const ChatUserLeftNav = ({ setchatPartner, setdisplayMsg }) => {
     });
   };
 
-  const createGroup = () => {
-    dispatch(asyncUserLogout());
+  const serachUser = () => {
+    
   };
 
   return (
     <>
-      <div className="relative">
+      <div className="relative tex">
         <div className="flex flex-col py-6 pl-4 pr-2 w-[42vh] bg-white flex-shrink-0">
           <div className="flex flex-row items-center  h-12 w-full">
             <div className="flex items-center justify-center rounded-2xl text-indigo-700 bg-indigo-100 h-10 w-10">
@@ -32,14 +35,19 @@ const ChatUserLeftNav = ({ setchatPartner, setdisplayMsg }) => {
                 alt=""
               />
             </div>
-            <div className="ml-2 font-bold text-2xl">
+            <div className="ml-2 font-bold text-2xl" onClick={()=>{dispatch(asyncUserLogout())}}>
               {user && user.username}
             </div>
             <div className="absolute right-2">
-              <MdGroup className="text-2xl mt-2" onClick={createGroup} />
+              <Link to='/feed'>feed</Link>
+              <Link to='/profile'>profile</Link>
+              <IoSearchOutline className="text-2xl mt-2" onClick={serachUser
+              } />
             </div>
           </div>
-
+        <div className="h-10 mt-2 bg-red-200">
+           <input className="h-full w-full outline-none border-[1px] border-[#000] p-2 rounded-md" type="text" placeholder="Serach user..." />
+        </div>
           <div className="flex flex-col mt-6">
             <div className="flex flex-row items-center justify-between text-xs">
               <span className="font-bold">Active Conversations</span>

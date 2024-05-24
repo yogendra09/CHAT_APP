@@ -1,6 +1,6 @@
 import { io } from 'socket.io-client';
 
-const URL = 'http://localhost:8080/';
+const URL = 'https://chat-app-server-059e.onrender.com/';
 
 export const socket = io(URL);
 

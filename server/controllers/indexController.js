@@ -9,8 +9,9 @@ exports.home = catchAsyncErrors(async (req, res, next) => {
 });
 
 exports.currentUser = catchAsyncErrors(async (req, res, next) => {
-  // const user = await userModel.findById(req.id);
-  res.json({ user: req.user });
+  
+  const user = await userModel.findById(req.id);
+  res.json(user);
 });
 
 exports.userResgister = catchAsyncErrors(async (req, res, next) => {
@@ -24,8 +25,8 @@ exports.userLogout = catchAsyncErrors(async (req, res, next) => {
 
   const option = {
     exipres: new Date(),
-    httpOnly: true,
-    // secure:true
+    // httpOnly: true,
+    secure:true
   };
   res
     .status(200)

@@ -14,11 +14,11 @@ const App = () => {
         <Routes>
           <Route path="" element={<PrivateRoute />}>
             <Route index={true} path="/" element={<Home />} />
+            <Route path="/feed" element={<Feed />} />
+            <Route path="/profile" element={<Profile />} />
           </Route>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/feed" element={<Feed />} />
         </Routes>
       </BrowserRouter>
     </div>
